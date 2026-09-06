@@ -553,7 +553,7 @@ int esp_bringup(void)
     }
 #endif
 
-#ifdef CONFIG_ESPRESSIF_EMAC
+#if defined(CONFIG_ESPRESSIF_EMAC) && defined(CONFIG_BOARD_EMAC_AUTOINIT)
   ret = board_emac_init();
   if (ret < 0)
     {

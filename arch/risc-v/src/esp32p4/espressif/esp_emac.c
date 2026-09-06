@@ -48,6 +48,7 @@
 #include <nuttx/net/ioctl.h>
 #include <nuttx/net/mii.h>
 #include <nuttx/net/netdev_lowerhalf.h>
+#include <nuttx/mm/iob.h>
 
 #include "esp_eth.h"
 #include "esp_eth_driver.h"

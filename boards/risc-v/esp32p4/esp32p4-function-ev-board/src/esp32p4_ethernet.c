@@ -57,22 +57,15 @@ int board_emac_init(void)
 {
   int ret;
 
-  /* esp_eth_driver_install() relies on esp_timer; make sure the timer
-   * subsystem is initialised before creating the driver.
-   */
-
+  ninfo("STEP 1: before esp_hr_timer_init\n");
   ret = esp_hr_timer_init();
-  if (ret < 0)
-    {
-      nerr("ERROR: esp_hr_timer_init failed: %d\n", ret);
-      return ret;
-    }
+  ninfo("STEP 2: esp_hr_timer_init returned %d\n", ret);
+  if (ret < 0) return ret;
 
+
+  ninfo("STEP 5: before esp_emac_init\n");
   ret = esp_emac_init();
-  if (ret < 0)
-    {
-      nerr("ERROR: esp_emac_init failed: %d\n", ret);
-    }
+  ninfo("STEP 6: esp_emac_init returned %d\n", ret);
 
   return ret;
 }
