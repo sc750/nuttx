@@ -308,6 +308,10 @@ static inline_function void usrsock_unlock(void)
   nxrmutex_unlock(&g_usrsock_lock);
 }
 
+int net_sem_timedwait2(FAR sem_t *sem, bool interruptible,
+                       unsigned int timeout, FAR rmutex_t *mutex1,
+                       FAR rmutex_t *mutex2);
+
 /****************************************************************************
  * Name: usrsock_sem_timedwait
  *
