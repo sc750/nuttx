@@ -40,6 +40,7 @@
 
 #include "esp_ldo_regulator.h"
 #include "esp_clk_tree.h"
+#include "esp_private/esp_clk_tree_common.h"
 #include "esp_cache.h"
 #include "esp_private/periph_ctrl.h"
 #include "esp_private/dw_gdma.h"

@@ -569,7 +569,9 @@ void __esp_start(void)
   ets_printf("BC:S3-mmu\n");
 
 #ifdef CONFIG_ESPRESSIF_SPIRAM
+  ets_printf("BC:p1-chipinit\n");
   ret = esp_psram_chip_init();
+  ets_printf("BC:p2-chipinit-ret=%d\n", ret);
   if (ret != ESP_OK)
     {
 #  ifndef CONFIG_ESPRESSIF_SPIRAM_IGNORE_NOTFOUND
@@ -580,7 +582,9 @@ void __esp_start(void)
 #  ifdef CONFIG_ESPRESSIF_SPIRAM_BOOT_INIT
   if (ret == ESP_OK)
     {
+      ets_printf("BC:p3-psraminit\n");
       ret = esp_psram_init();
+      ets_printf("BC:p4-psraminit-ret=%d\n", ret);
       if (ret != ESP_OK)
         {
 #    ifndef CONFIG_ESPRESSIF_SPIRAM_IGNORE_NOTFOUND
