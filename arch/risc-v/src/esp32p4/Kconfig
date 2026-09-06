@@ -410,6 +410,8 @@ config ESPRESSIF_MIPI_CSI
 		delivered through a dedicated DW-GDMA channel into PSRAM
 		double buffers (see esp32p4_mipi_csi.c).
 
+source "arch/risc-v/src/esp32p4/espressif_eth_kconfig.inc"
+
 endif # ARCH_CHIP_ESP32P4
 
 config P4_REV3_MSPI_CRASH_AFTER_POWER_UP_WORKAROUND
