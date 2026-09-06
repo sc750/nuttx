@@ -498,6 +498,7 @@ void __esp_start(void)
 #endif
 
   bootloader_clear_bss_section();
+  ets_printf("BC:S1-bss\n");
 
 #ifdef CONFIG_ESPRESSIF_SIMPLE_BOOT
   if (bootloader_init() != 0)
@@ -565,6 +566,7 @@ void __esp_start(void)
   spi_flash_init_chip_state();
 
   esp_mmu_map_init();
+  ets_printf("BC:S3-mmu\n");
 
 #ifdef CONFIG_ESPRESSIF_SPIRAM
   ret = esp_psram_chip_init();
@@ -593,7 +595,9 @@ void __esp_start(void)
    * RTC slow clock calibration.
    */
 
+  ets_printf("BC:S4-clk-pre\n");
   esp_clk_init();
+  ets_printf("BC:S5-clk-post\n");
 
   esp_mspi_pin_reserve();
 
@@ -623,6 +627,7 @@ void __esp_start(void)
   /* Configure the UART so we can get debug output */
 
   esp_lowsetup();
+  ets_printf("BC:S6-lowsetup\n");
 
 #ifdef USE_EARLYSERIALINIT
   /* Perform early serial initialization */
@@ -659,6 +664,7 @@ void __esp_start(void)
 
   showprogress("D");
 
+  ets_printf("BC:S7-nxstart\n");
   nx_start();
 
   UNUSED(ret);
